@@ -75,76 +75,42 @@
     class="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 text-white font-sans"
   >
     <!-- Container -->
-    <div class="max-w-7xl mx-auto px-6 py-10">
+    <div class="max-w-7xl mx-auto px-2 md:px-6 py-10 pt-24">
       <!-- NAVBAR -->
-      <header class="flex items-center justify-between mb-8">
-        <div class="flex items-center gap-4">
-          <div class="flex items-center gap-2">
-            <div
-              class="w-16 h-16 from-purple-500 to-cyan-400 rounded-2xl flex items-center justify-center shadow-lg"
-            >
-              <!-- logo glyph -->
-              <img src="/image/logo.png" alt="Logo" />
-            </div>
+      <header class="fixed top-0 left-0 right-0 z-50 bg-white/5 backdrop-blur-lg border-b border-white/10">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+          <!-- Logo -->
+          <a href="#" class="flex items-center gap-3">
+            <img src="/image/logo.png" class="w-12 h-12 rounded-xl" alt="Logo" />
             <div>
-              <div class="text-lg font-bold tracking-wide">3A ANNA</div>
-              <div class="text-xs text-gray-300">Online Gaming Hub</div>
+              <h1 class="text-lg font-bold tracking-wider">3A ANNA</h1>
+              <span class="text-xs text-gray-300">Online Gaming Hub</span>
             </div>
-          </div>
-        </div>
+          </a>
 
-        <nav class="flex items-center gap-4">
-          <ul class="hidden md:flex items-center gap-4 text-sm text-gray-200">
-            <li>
-              <a href="#" class="px-3 py-2 rounded-md hover:bg-white/5">Home</a>
-            </li>
-            <li>
-              <a href="#games" class="px-3 py-2 rounded-md hover:bg-white/5"
-                >Games</a
-              >
-            </li>
-            <li>
-              <a href="#players" class="px-3 py-2 rounded-md hover:bg-white/5"
-                >Players</a
-              >
-            </li>
-            <li>
-              <a href="#events" class="px-3 py-2 rounded-md hover:bg-white/5"
-                >Events</a
-              >
-            </li>
-          </ul>
+          <!-- Menu -->
+          <nav class="hidden md:flex items-center gap-6 text-sm">
+            <a href="#" class="hover:text-white text-gray-300 transition">Home</a>
+            <a href="#games" class="hover:text-white text-gray-300 transition">Games</a>
+            <a href="#players" class="hover:text-white text-gray-300 transition">Players</a>
+            <a href="#events" class="hover:text-white text-gray-300 transition">Events</a>
+          </nav>
 
+          <!-- CTA & Search -->
           <div class="flex items-center gap-3">
-            <button
-              class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full neon-btn bg-gradient-to-r from-purple-600 to-cyan-500 text-white text-sm"
-            >
+            <button class="hidden md:inline-flex px-5 py-2 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 hover:opacity-90 transition shadow-lg">
               Play Now
             </button>
-
-            <div class="p-2 rounded-full glass border border-white/6">
-              <svg
-                class="w-5 h-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                stroke-width="1.2"
-              >
-                <path
-                  d="M15 17h5l-1.405-1.405"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-                <path
-                  d="M19 11a7 7 0 10-14 0 7 7 0 0014 0z"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
+            <button class="p-2 rounded-full hover:bg-white/10 transition">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <circle cx="11" cy="11" r="6"></circle>
+                <line x1="17" y1="17" x2="21" y2="21"></line>
               </svg>
-            </div>
+            </button>
           </div>
-        </nav>
+        </div>
       </header>
+
 
       <!-- HERO -->
       <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10">
@@ -164,7 +130,7 @@
 
                 <!-- overlay card -->
                 <div
-                  class="absolute left-8 bottom-8 glass p-4 w-80 border border-white/6 rounded-xl"
+                  class="hidden md:block absolute left-8 bottom-8 glass p-4 w-80 border border-white/6 rounded-xl"
                 >
                   <div class="text-sm font-semibold">Warcraft 3 Reforged</div>
                   <div class="text-xs text-gray-300 mt-2">
@@ -289,33 +255,37 @@
 
           <!-- Player list -->
           <div id="players" class="mt-8 glass p-4 rounded-[18px]">
-            <div class="flex items-center justify-between mb-4">
+            <!-- Header -->
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
               <h4 class="text-lg font-semibold">
                 Player List
                 <span class="text-sm text-gray-300">(2,134 players)</span>
               </h4>
-              <div class="flex items-center gap-3">
+
+              <!-- Search + Filter -->
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
                 <input
                   placeholder="Search player or game"
-                  class="px-4 py-2 rounded-full bg-transparent border border-white/6 text-sm placeholder-gray-400 w-64"
+                  class="px-4 py-2 rounded-full bg-transparent border border-white/10 text-sm placeholder-gray-400 w-full sm:w-64"
                 />
-                <button class="glass p-2 rounded-full">Filter</button>
+                <button class="glass px-4 py-2 rounded-full text-sm">Filter</button>
               </div>
             </div>
 
+            <!-- List -->
             <div class="space-y-3">
-              <!-- player row -->
               <template x-for="i in 4" :key="i">
-                <div
-                  class="flex items-center gap-4 p-3 rounded-lg bg-gradient-to-r from-white/2 to-transparent border border-white/4"
-                >
-                  <div
-                    class="w-12 h-12 rounded-lg bg-gray-700 flex items-center justify-center"
-                  >
+                <div class="flex flex-col sm:flex-row sm:items-center gap-4 p-3 rounded-lg bg-gradient-to-r from-white/5 to-transparent border border-white/10">
+                  
+                  <!-- Avatar -->
+                  <div class="w-12 h-12 rounded-lg bg-gray-700 flex items-center justify-center">
                     A
                   </div>
+
+                  <!-- Content -->
                   <div class="flex-1">
-                    <div class="flex items-center justify-between">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                      <!-- Player Info -->
                       <div>
                         <div class="text-sm font-semibold">
                           Johan Sundstein
@@ -325,24 +295,20 @@
                           Dota 2 • Rating <span class="font-medium">10.12</span>
                         </div>
                       </div>
+
+                      <!-- Action Buttons -->
                       <div class="flex items-center gap-2">
-                        <button
-                          class="px-3 py-1 rounded-md border border-white/6 text-xs"
-                        >
-                          Profile
-                        </button>
-                        <button
-                          class="px-3 py-1 rounded-md border border-white/6 text-xs"
-                        >
-                          Compare
-                        </button>
+                        <button class="px-3 py-1 rounded-md border border-white/10 text-xs hover:bg-white/5 transition">Profile</button>
+                        <button class="px-3 py-1 rounded-md border border-white/10 text-xs hover:bg-white/5 transition">Compare</button>
                       </div>
                     </div>
                   </div>
+
                 </div>
               </template>
             </div>
           </div>
+
         </div>
 
         <!-- Right column: Actual games + filter -->
@@ -516,4 +482,5 @@ s0.parentNode.insertBefore(s1,s0);
 <!--End of Tawk.to Script-->
   </body>
 </html>
+
 
