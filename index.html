@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="/image/logo.png" type="image/x-icon" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>3A ANNA — Gaming Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <style>
+      /* Custom glassmorphism and glow tweaks */
+      :root {
+        --glass-bg: rgba(255, 255, 255, 0.04);
+        --glass-border: rgba(255, 255, 255, 0.06);
+        --accent-purple: #7c3aed; /* violet-600 */
+        --accent-blue: #06b6d4; /* cyan-500 */
+        --card-radius: 18px;
+      }
+      /* Scrollbar Style */
+      body::-webkit-scrollbar {
+        width: 3px;
+      }
+      body::-webkit-scrollbar-thumb {
+        background: #5866fe;
+        border-radius: 10px;
+      }
+      .glass {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.03),
+          rgba(255, 255, 255, 0.02)
+        );
+        border: 1px solid var(--glass-border);
+        backdrop-filter: blur(8px) saturate(120%);
+        -webkit-backdrop-filter: blur(8px) saturate(120%);
+        border-radius: var(--card-radius);
+      }
+      .neon-btn {
+        box-shadow: 0 6px 30px rgba(124, 58, 237, 0.18),
+          inset 0 -3px 8px rgba(0, 0, 0, 0.25);
+      }
+      .glow-outline {
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.12);
+      }
+      /* floating filter card */
+      .filter-card {
+        border-radius: 14px;
+      }
+      /* scrollbar */
+      ::-webkit-scrollbar {
+        height: 8px;
+        width: 8px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 999px;
+      }
+      /* responsive tweaks for hero image */
+      @media (min-width: 1024px) {
+        .hero-left {
+          height: 420px;
+        }
+      }
+      @media (max-width: 640px) {
+        .desktop-only {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 text-white font-sans"
+  >
+    <!-- Container -->
+    <div class="max-w-7xl mx-auto px-6 py-10">
+      <!-- NAVBAR -->
+      <header class="flex items-center justify-between mb-8">
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2">
+            <div
+              class="w-16 h-16 from-purple-500 to-cyan-400 rounded-2xl flex items-center justify-center shadow-lg"
+            >
+              <!-- logo glyph -->
+              <img src="/image/logo.png" alt="Logo" />
+            </div>
+            <div>
+              <div class="text-lg font-bold tracking-wide">3A ANNA</div>
+              <div class="text-xs text-gray-300">Online Gaming Hub</div>
+            </div>
+          </div>
+        </div>
+
+        <nav class="flex items-center gap-4">
+          <ul class="hidden md:flex items-center gap-4 text-sm text-gray-200">
+            <li>
+              <a href="#" class="px-3 py-2 rounded-md hover:bg-white/5">Home</a>
+            </li>
+            <li>
+              <a href="#games" class="px-3 py-2 rounded-md hover:bg-white/5"
+                >Games</a
+              >
+            </li>
+            <li>
+              <a href="#players" class="px-3 py-2 rounded-md hover:bg-white/5"
+                >Players</a
+              >
+            </li>
+            <li>
+              <a href="#events" class="px-3 py-2 rounded-md hover:bg-white/5"
+                >Events</a
+              >
+            </li>
+          </ul>
+
+          <div class="flex items-center gap-3">
+            <button
+              class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full neon-btn bg-gradient-to-r from-purple-600 to-cyan-500 text-white text-sm"
+            >
+              Play Now
+            </button>
+
+            <div class="p-2 rounded-full glass border border-white/6">
+              <svg
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="1.2"
+              >
+                <path
+                  d="M15 17h5l-1.405-1.405"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <path
+                  d="M19 11a7 7 0 10-14 0 7 7 0 0014 0z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <!-- HERO -->
+      <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10">
+        <!-- Left big banner + carousel -->
+        <div class="lg:col-span-8">
+          <div class="glass p-6 rounded-[22px] overflow-hidden">
+            <div class="flex flex-col lg:flex-row gap-6">
+              <div class="relative hero-left flex-1 rounded-lg overflow-hidden">
+                <!-- large banner -->
+                <div
+                  class="w-full h-64 lg:h-96 bg-[url('/image/hero.jpeg')] bg-cover bg-center rounded-lg"
+                >
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent"
+                  ></div>
+                </div>
+
+                <!-- overlay card -->
+                <div
+                  class="absolute left-8 bottom-8 glass p-4 w-80 border border-white/6 rounded-xl"
+                >
+                  <div class="text-sm font-semibold">Warcraft 3 Reforged</div>
+                  <div class="text-xs text-gray-300 mt-2">
+                    Tokyo Tournament • Updating
+                  </div>
+                  <p class="text-xs text-gray-300 mt-3 line-clamp-3">
+                    Hello everyone, we're glad to inform you that the tournament
+                    in Tokyo has been postponed due to ongoing maintenance. Stay
+                    tuned for updates.
+                  </p>
+                  <div class="mt-4 flex items-center gap-3">
+                    <button
+                      class="px-3 py-2 rounded-md bg-gradient-to-r from-purple-600 to-cyan-400 text-white text-sm"
+                    >
+                      Watch Teaser
+                    </button>
+                    <span class="text-xs text-gray-400">May 13, 2021</span>
+                  </div>
+                </div>
+
+                <!-- carousel nav small -->
+                <!-- <div class="absolute right-6 bottom-6 flex items-center gap-2">
+                  <button class="glass p-3 rounded-full">
+                    <svg
+                      class="w-4 h-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="white"
+                      stroke-width="1.2"
+                    >
+                      <path
+                        d="M15 18l-6-6 6-6"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </button>
+                  <div class="glass p-2 px-3 rounded-full text-xs">1 of 5</div>
+                  <button class="glass p-3 rounded-full">
+                    <svg
+                      class="w-4 h-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="white"
+                      stroke-width="1.2"
+                    >
+                      <path
+                        d="M9 6l6 6-6 6"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </div> -->
+              </div>
+
+              <!-- Right login / welcome card -->
+              <div
+                class="w-full lg:w-96 glass p-6 rounded-xl border border-white/6 flex-shrink-0"
+              >
+                <div class="flex items-center justify-between">
+                  <div>
+                    <h3 class="text-2xl font-bold">
+                      Welcome to
+                      <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-cyan-300"
+                        >3A ANNA</span
+                      >
+                    </h3>
+                    <p class="text-sm text-gray-300 mt-1">
+                      Enter your credentials or sign up to join tournaments and
+                      teams.
+                    </p>
+                  </div>
+                  <div class="text-xs text-gray-400">BETA</div>
+                </div>
+
+                <form class="mt-6 space-y-4">
+                  <div>
+                    <label class="text-xs text-gray-300">Email</label>
+                    <input
+                      type="email"
+                      placeholder="you@email.com"
+                      class="w-full mt-2 p-3 rounded-md bg-transparent border border-white/6 text-white placeholder-gray-400"
+                    />
+                  </div>
+                  <div>
+                    <label class="text-xs text-gray-300">Password</label>
+                    <input
+                      type="password"
+                      placeholder="••••••"
+                      class="w-full mt-2 p-3 rounded-md bg-transparent border border-white/6 text-white placeholder-gray-400"
+                    />
+                  </div>
+                  <div
+                    class="flex items-center justify-between text-sm text-gray-300"
+                  >
+                    <label class="flex items-center gap-2"
+                      ><input type="checkbox" class="accent-purple-500" /> Keep
+                      me logged in</label
+                    >
+                    <a href="#" class="text-sm text-gray-200 hover:underline"
+                      >Forgot?</a
+                    >
+                  </div>
+                  <div class="flex gap-3">
+                    <button
+                      class="flex-1 py-3 rounded-md neon-btn bg-gradient-to-r from-purple-600 to-cyan-400"
+                    >
+                      Sign In
+                    </button>
+                    <button
+                      class="flex-1 py-3 rounded-md border border-white/6"
+                    >
+                      Sign Up
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Player list -->
+          <div id="players" class="mt-8 glass p-4 rounded-[18px]">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="text-lg font-semibold">
+                Player List
+                <span class="text-sm text-gray-300">(2,134 players)</span>
+              </h4>
+              <div class="flex items-center gap-3">
+                <input
+                  placeholder="Search player or game"
+                  class="px-4 py-2 rounded-full bg-transparent border border-white/6 text-sm placeholder-gray-400 w-64"
+                />
+                <button class="glass p-2 rounded-full">Filter</button>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <!-- player row -->
+              <template x-for="i in 4" :key="i">
+                <div
+                  class="flex items-center gap-4 p-3 rounded-lg bg-gradient-to-r from-white/2 to-transparent border border-white/4"
+                >
+                  <div
+                    class="w-12 h-12 rounded-lg bg-gray-700 flex items-center justify-center"
+                  >
+                    A
+                  </div>
+                  <div class="flex-1">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <div class="text-sm font-semibold">
+                          Johan Sundstein
+                          <span class="text-xs text-gray-400">• Notail</span>
+                        </div>
+                        <div class="text-xs text-gray-300">
+                          Dota 2 • Rating <span class="font-medium">10.12</span>
+                        </div>
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <button
+                          class="px-3 py-1 rounded-md border border-white/6 text-xs"
+                        >
+                          Profile
+                        </button>
+                        <button
+                          class="px-3 py-1 rounded-md border border-white/6 text-xs"
+                        >
+                          Compare
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right column: Actual games + filter -->
+        <aside class="lg:col-span-4">
+          <div id="games" class="glass p-5 rounded-[20px]">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="text-lg font-semibold">Actual Games</h4>
+              <div class="flex items-center gap-2">
+                <button class="glass p-2 rounded-md">A</button>
+                <button class="glass p-2 rounded-md">Z</button>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <!-- game card -->
+              <template x-for="g in [1,2,3,4,5,6]" :key="g">
+                <div
+                  class="rounded-xl overflow-hidden glass p-3 flex flex-col items-center text-center"
+                >
+                  <div
+                    class="w-full h-28 bg-gradient-to-br from-purple-700 to-blue-500 rounded-lg flex items-center justify-center"
+                  >
+                    <div class="text-xs text-gray-200">Game Art</div>
+                  </div>
+                  <div class="mt-3 text-sm font-semibold">Game Title</div>
+                  <div class="text-xs text-gray-300 mt-1">
+                    MOBA • 1.2k players
+                  </div>
+                </div>
+              </template>
+            </div>
+
+            <!-- filter floating card -->
+            <!-- <div x-data="{open:false}" class="relative mt-3">
+              <button
+                @click="open = !open"
+                class="absolute right-0 -top-6 bg-gradient-to-r from-purple-600 to-cyan-400 px-3 py-2 rounded-md"
+              >
+                Game Filter
+              </button>
+
+              <div
+                x-show="open"
+                x-transition
+                class="filter-card absolute right-0 mt-12 w-72 p-4 glass border border-white/6 shadow-lg"
+              >
+                <h5 class="font-semibold">
+                  Game Filter
+                  <span class="text-sm text-gray-300">(20 games)</span>
+                </h5>
+                <div class="mt-3 space-y-3">
+                  <label class="flex items-center gap-2"
+                    ><input type="checkbox" /> Strategy</label
+                  >
+                  <label class="flex items-center gap-2"
+                    ><input type="checkbox" /> MOBA</label
+                  >
+                  <label class="flex items-center gap-2"
+                    ><input type="checkbox" /> Shooters</label
+                  >
+                </div>
+                <div class="mt-4 flex gap-2">
+                  <button
+                    class="flex-1 py-2 rounded-md bg-gradient-to-r from-purple-600 to-cyan-400"
+                  >
+                    Apply
+                  </button>
+                  <button class="flex-1 py-2 rounded-md border border-white/6">
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- mini stats -->
+          <div class="mt-6 glass p-4 rounded-[18px]">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-sm text-gray-300">Active Players</div>
+                <div class="text-2xl font-bold">12.8k</div>
+              </div>
+              <div>
+                <div class="text-sm text-gray-300">Tournaments</div>
+                <div class="text-2xl font-bold">24</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- community card -->
+          <div class="mt-6 glass p-4 rounded-[18px]">
+            <div class="flex items-start gap-3">
+              <div
+                class="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-cyan-400 flex items-center justify-center"
+              >
+                C
+              </div>
+              <div>
+                <div class="font-semibold">Join Our Community</div>
+                <div class="text-sm text-gray-300">
+                  Discord, tournaments, and exclusive drops.
+                </div>
+              </div>
+            </div>
+            <div class="mt-4 flex gap-2">
+              <button
+                class="flex-1 py-2 rounded-md bg-gradient-to-r from-purple-600 to-cyan-400"
+              >
+                Join Discord
+              </button>
+              <button class="flex-1 py-2 rounded-md border border-white/6">
+                Learn More
+              </button>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- EVENTS / FOOTER -->
+      <section id="events" class="glass p-6 rounded-[18px]">
+        <div class="flex items-center justify-between">
+          <div>
+            <h4 class="text-lg font-semibold">Upcoming Events</h4>
+            <p class="text-sm text-gray-300">
+              Tournaments, Drops & Live Streams
+            </p>
+          </div>
+          <div class="text-sm text-gray-300">See all</div>
+        </div>
+
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="glass p-4 rounded-lg">
+            <div class="text-sm font-semibold">Tokyo Championship</div>
+            <div class="text-xs text-gray-300 mt-2">May 25, 2025 • Online</div>
+          </div>
+          <div class="glass p-4 rounded-lg">
+            <div class="text-sm font-semibold">Summer Arena</div>
+            <div class="text-xs text-gray-300 mt-2">June 1, 2025 • LAN</div>
+          </div>
+          <div class="glass p-4 rounded-lg">
+            <div class="text-sm font-semibold">Newcomer Cup</div>
+            <div class="text-xs text-gray-300 mt-2">June 20, 2025 • Online</div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="mt-8 text-center text-sm text-gray-400">
+        © 3A ANNA — Designed for gamers
+      </footer>
+    </div>
+
+    <!-- small scripts -->
+    <script>
+      // Simple Alpine helper to replicate template x-for functionality for older browsers
+      document.addEventListener("alpine:init", () => {
+        // nothing extra for now
+      });
+    </script>
+  </body>
+</html>
